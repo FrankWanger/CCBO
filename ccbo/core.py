@@ -21,7 +21,6 @@ from gpytorch.kernels.scale_kernel import ScaleKernel
 
 from functools import partial
 
-
 class GP_vi_mixed(ApproximateGP, GPyTorchModel):
     def __init__(self, train_x: torch.Tensor, train_y: torch.Tensor, cat_dims):
         self.train_inputs = (train_x,)
