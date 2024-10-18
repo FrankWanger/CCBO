@@ -10,7 +10,6 @@ This project involves the implementation of constrained composite Bayesian optim
 ### How does it work to guide experiment?
 ![CCBO Overview](ccbo.png)
 
-
 ### Publication (to-be-updated)
 Constrained Composite Bayesian Optimization for Rational Synthesis of Polymeric Micro- and Nanoparticles
 
