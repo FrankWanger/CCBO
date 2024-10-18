@@ -21,6 +21,7 @@ from gpytorch.kernels.scale_kernel import ScaleKernel
 
 from functools import partial
 
+
 class GP_vi_mixed(ApproximateGP, GPyTorchModel):
     def __init__(self, train_x: torch.Tensor, train_y: torch.Tensor, cat_dims):
         self.train_inputs = (train_x,)
@@ -98,6 +99,7 @@ class GP_vi_mixed(ApproximateGP, GPyTorchModel):
         covar_x = self.covar_module(x)
         return gpytorch.distributions.MultivariateNormal(mean_x, covar_x)
 
+
 def sim_espray_constrained(x, noise_se=None):
     # Define the equations
     conc = x[:, 0]
@@ -117,6 +119,7 @@ def sim_espray_constrained(x, noise_se=None):
 
 def _neg_sq_dist(y, y_target, offset=0, X=None):
     return -torch.square(y - y_target) + offset
+
 
 def optimize_acqf_and_get_recommendation(
     X_raw: torch.tensor,
@@ -139,7 +142,8 @@ def optimize_acqf_and_get_recommendation(
     y_target: torch.tensor, the target value for the objective
     y_log_transform: bool, whether to log transform the output
     fr_log_transform: bool, whether to log transform the flow rate
-    strategy: str, the strategy to use, available strategies are: 'rnd', 'qEI', 'qEI_vi_mixed_con', 'qEICF_vi_mixed_con'
+    strategy: str, the strategy to use, available strategies are: 'rnd', 'qEI', 'qEI_vi_mixed_con',
+      'qEICF_vi_mixed_con', see _build_acqf_constrained for details
     batch_size: int, the number of experiments
 
     return:
@@ -221,13 +225,13 @@ def _build_acqf_constrained(X_normalized, y_obj, y_con, y_target, strategy):
     Build the acquisition function for the constrained optimization.
     Available strategies are:
 
-    - qEI (this is baseline with NOT constraint modelling)
+    - qEI (vanilla BO in paper - naive qEI for objective only)
 
-    - qEI_vi_mixed_con (qEI with variational inference model for constraint,
+    - qEI_vi_mixed_con (constrained BO in paper - qEI with variational inference model for constraint
         specifically for mixed input features - categorical and continuous,
         relies on botorch default constraint implementation - SampleReducingMCAcquisitionFunction)
 
-    - qEICF_vi_mixed_con (qEICF version of qEI_vi_mixed_con)
+    - qEICF_vi_mixed_con (CCBO in paper - composite version of qEI_vi_mixed_con)
 
     args:
     X_normalized: torch.tensor, the normalized input features
