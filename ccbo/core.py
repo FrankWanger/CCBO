@@ -277,7 +277,7 @@ def _build_acqf_constrained(X_normalized, y_obj, y_con, y_target, strategy):
     sampler = SobolQMCNormalSampler(sample_shape=torch.Size([512]))
 
     # for non-composite acquisition functions, use y_distance as the target
-    y_distance = _neg_sq_dist(y_obj, y_target, offset=10.0).reshape(-1, 1)
+    y_distance = _neg_sq_dist(y_obj, y_target).reshape(-1, 1)
     best_f = np.ma.masked_array(y_distance, mask=~y_con.bool()).max().item()
 
     if strategy == "qEI":
