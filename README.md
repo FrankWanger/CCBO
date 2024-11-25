@@ -28,32 +28,27 @@ The code haven been tested on *macOS Sonoma (14.4.1)*, *Windows 10/11*, and *Lin
 ### Python Dependencies
 To run the notebooks and scripts in this project, you will need the following Python dependencies:
 - `python = 3.9`
-- `torch = 2.2.2`
 - `botorch == 0.10.0`
 - `gpytorch == 1.11`
-- `numpy`
+- `numpy == 1.23`
 - `pandas`
-- `matplotlib`
 - `seaborn`
 - `joblib`
+- (optional)`tqdm`
 
 ## Installation Guide
-To install the required dependencies, run the following command in your Terminal (make sure you have [Conda](https://www.anaconda.com/download/success) already installed)
+The typical installation time should be less than 10 min. To begin, install the required dependencies by running the following commands in your Terminal (make sure you have [Conda](https://www.anaconda.com/download/success) already installed). 
 
 Due to compatibility issues, it is recommended to create a virtual environment first:
 ```bash
 conda create -n ccbo python=3.9
 conda activate ccbo
 ```
-Next, use `pip` to easily install BoTorch. **Be aware to use the pip from the new virtual environment**, you can refer to [this](https://stackoverflow.com/questions/41060382/using-pip-to-install-packages-to-anaconda-environment) post to make sure you did not install BoTorch into the global Python.
+Next, use `pip` to easily install BoTorch and all dependencies. **Be aware to use the pip from the new virtual environment**, you can refer to [this](https://stackoverflow.com/questions/41060382/using-pip-to-install-packages-to-anaconda-environment) post to make sure you did not install BoTorch into your global Python.
 ```bash
-python -m pip install botorch==0.10.0 gpytorch==1.11
+python -m pip install botorch==0.10.0 seaborn numpy==1.23 pandas joblib
 ```
-Then, install the rest dependencies:
-```bash
-conda install pandas matplotlib seaborn joblib
-```
-Finally, clone this repository:
+Finally, clone this repository to your local machine:
 ```bash
 git clone https://github.com/FrankWanger/CCBO.git
 ```
@@ -70,7 +65,7 @@ The parameters that are related to reproducing the results in the manuscript are
 Notably, the run time for reproducing the benchmark result with the default parameters on a PC with 8-core CPU (i7-10700F, 2.9 GHz) and 32 GB RAM was ~1 h. 
 
 
-`CCBO_guide_exp.ipynb` An example notebook for using CCBO to guide laboratory electrospray experiments, with SOBEL initialization. The wet-lab experiment results were accompanied to the notebook.
+`CCBO_guide_exp.ipynb` An example notebook for using CCBO to guide laboratory electrospray experiments, with SOBEL initialization. The wet-lab experiment results were accompanied to the notebook. Albeit efforts have been made to set all random seeds in Torch and Numpy libraries, the authors are aware that the recommended experiment may vary between different installations of BoTorch. We believe that this does not weaken the conclusions as the benchmark results have been tested to show consistency across platforms.
 
 ## Core functions
 There are a few core and helper functions developed in `ccbo/core.py`
