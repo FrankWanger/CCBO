@@ -23,7 +23,7 @@ CCBO requires python environment to work. To get started with CCBO, follow these
 ### Hardware
 The source code provided for CCBO does not require any specific hardware. For ideal performance, we recommend RAM of 16 GB and at least a 4-core CPU.
 ### Software 
-The code haven been tested on *macOS Sonoma (14.4.1)*, *Windows 10/11*, and *Linux (Ubuntu 16.04)*. It is recommended to have package management software such as [Conda](https://www.anaconda.com/download/success). The following installation guide is provided with Conda.
+The code haven been tested on *macOS Sonoma (14.4.1)*, *Windows 10/11*, and *Linux (Ubuntu 16.04)*. It is recommended to have package management software such as [Conda](https://www.anaconda.com/download/success).
 
 ### Python Dependencies
 To run the notebooks and scripts in this project, you will need the following Python dependencies:
@@ -38,14 +38,22 @@ To run the notebooks and scripts in this project, you will need the following Py
 - `joblib`
 
 ## Installation Guide
-To install the required dependencies, run the following command in your Terminal (make sure you have [Conda](https://www.anaconda.com/download/success) already installed):
+To install the required dependencies, run the following command in your Terminal (make sure you have [Conda](https://www.anaconda.com/download/success) already installed)
+
+Due to compatibility issues, it is recommended to create a virtual environment first:
 ```bash
 conda create -n ccbo python=3.9
 conda activate ccbo
-conda install botorch==0.10.0 gpytorch==1.11 -c pytorch -c gpytorch -c conda-forge
+```
+Next, use `pip` to easily install BoTorch. **Be aware to use the pip from the new virtual environment**, you can refer to [this](https://stackoverflow.com/questions/41060382/using-pip-to-install-packages-to-anaconda-environment) post to make sure you did not install BoTorch into the global Python.
+```bash
+python -m pip install botorch==0.10.0 gpytorch==1.11
+```
+Then, install the rest dependencies:
+```bash
 conda install pandas matplotlib seaborn joblib
 ```
-Then, clone this repository:
+Finally, clone this repository:
 ```bash
 git clone https://github.com/FrankWanger/CCBO.git
 ```
