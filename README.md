@@ -38,19 +38,19 @@ To run the notebooks and scripts in this project, you will need the following Py
 - `joblib`
 
 ## Installation Guide
-To install the required dependencies, run the following command (make sure you have [Conda](https://www.anaconda.com/download/success) already installed):
+To install the required dependencies, run the following command in your Terminal (make sure you have [Conda](https://www.anaconda.com/download/success) already installed):
 ```bash
 conda create -n ccbo python=3.9
+conda activate ccbo
 conda install botorch==0.10.0 gpytorch==1.11 -c pytorch -c gpytorch -c conda-forge
 conda install pandas matplotlib seaborn joblib
 ```
-
-### Clone the repository
+Then, clone this repository:
 ```bash
 git clone https://github.com/FrankWanger/CCBO.git
 ```
 ## Running the notebook to reproduce results
-There are two demo notebooks to reproduce the experiments included in the manuscript. 
+There are two demo notebooks to reproduce the experiments included in the manuscript. If you are not familiar with Jupyter notebooks, please refer to [this](https://docs.jupyter.org/en/latest/running.html) guide.
 
 `CCBO_benchmark.ipynb` A notebook showing benchmarking CCBO against vanilla BO, constrained BO, and random baseline with a synthetic electrospray problem. The same initial dataset has been provided in the notebook.
 
@@ -59,7 +59,7 @@ The parameters that are related to reproducing the results in the manuscript are
 - `TRIALS`, the number of repetition (of the iterations) to obtain confidence interval, the default is 20
 - `PARA_EVAL`, a boolean that sets whether to use `joblib` to parallel the different trials. This shouldn't affect the results, the default is `True`. If sets to `False`
 
-Notably, the run time for reproducing the benchmark result with the default parameters on a PC with 8-core CPU@2.90GHz (i7-10700F) and 32 GB RAM was ~1 h. 
+Notably, the run time for reproducing the benchmark result with the default parameters on a PC with 8-core CPU\@2.90GHz (i7-10700F) and 32 GB RAM was ~1 h. 
 
 
 `CCBO_guide_exp.ipynb` An example notebook for using CCBO to guide laboratory electrospray experiments, with SOBEL initialization. The wet-lab experiment results were accompanied to the notebook.
