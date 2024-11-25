@@ -59,7 +59,7 @@ The parameters that are related to reproducing the results in the manuscript are
 - `TRIALS`, the number of repetition (of the iterations) to obtain confidence interval, the default is 20
 - `PARA_EVAL`, a boolean that sets whether to use `joblib` to parallel the different trials. This shouldn't affect the results, the default is `True`. If sets to `False`
 
-Notably, the run time for reproducing the benchmark result with the default parameters on a PC with 8-core CPU\@2.90GHz (i7-10700F) and 32 GB RAM was ~1 h. 
+Notably, the run time for reproducing the benchmark result with the default parameters on a PC with 8-core CPU (i7-10700F, 2.9 GHz) and 32 GB RAM was ~1 h. 
 
 
 `CCBO_guide_exp.ipynb` An example notebook for using CCBO to guide laboratory electrospray experiments, with SOBEL initialization. The wet-lab experiment results were accompanied to the notebook.
