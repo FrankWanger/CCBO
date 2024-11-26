@@ -37,6 +37,8 @@ To run the notebooks and scripts in this project, you will need the following Py
 - `joblib`
 - (optional)`tqdm`
 
+Note: NumPy versions above 2.0 are not supported by BoTorch/PyTorch (2024.11.26)
+
 ## Installation Guide
 The typical installation time should be less than 10 min. To begin, install the required dependencies by running the following commands in your Terminal (make sure you have [Conda](https://www.anaconda.com/download/success) already installed). 
 
@@ -56,7 +58,7 @@ Step 2: Install dependencies
     ```bash
     conda install botorch==0.10 seaborn joblib pandas -c gpytorch -c conda-forge
     ```
-    - 
+    
 
 - Option B - Install with pip (tested on Mac)
 
@@ -81,7 +83,7 @@ The parameters that are related to reproduce the results in the manuscript are:
 Notably, the run time for reproducing the benchmark result with the default parameters on a PC with 8-core CPU (i7-10700F, 2.9 GHz) and 32 GB RAM was ~1 h. 
 
 
-`CCBO_guide_exp.ipynb` An example notebook for using CCBO to guide laboratory electrospray experiments, with SOBEL initialization. The wet-lab experiment results were accompanied to the notebook. Albeit efforts have been made to set all random seeds in Torch and Numpy libraries, the authors are aware that the recommended experiment may vary between different installations of BoTorch. We believe that this does not weaken the conclusions as the benchmark results have been tested to show consistency across platforms.
+`CCBO_guide_exp.ipynb` An example notebook for using CCBO to guide laboratory electrospray experiments, with SOBEL initialization. The wet-lab experiment results were accompanied to the notebook. Albeit efforts have been made to set all random seeds in PyTorch and Numpy libraries, the authors are aware that the individual experiment recommended may vary between different installations of BoTorch. We believe that this does not weaken the conclusions as the benchmark results have been tested to show consistency across platforms.
 
 ## Core functions
 There are a few core and helper functions developed in `ccbo/core.py`
