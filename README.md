@@ -31,6 +31,7 @@ To run the notebooks and scripts in this project, you will need the following Py
 - `botorch == 0.10.0`
 - `gpytorch == 1.11`
 - `numpy == 1.23`
+- `pytorch`
 - `pandas`
 - `seaborn`
 - `joblib`
@@ -39,16 +40,31 @@ To run the notebooks and scripts in this project, you will need the following Py
 ## Installation Guide
 The typical installation time should be less than 10 min. To begin, install the required dependencies by running the following commands in your Terminal (make sure you have [Conda](https://www.anaconda.com/download/success) already installed). 
 
-Due to compatibility issues, it is recommended to create a virtual environment first:
+Step 1: Create a new virtual environment:
 ```bash
 conda create -n ccbo python=3.9
 conda activate ccbo
 ```
-Next, use `pip` to easily install BoTorch and all dependencies. **Be aware to use the pip from the new virtual environment**, you can refer to [this](https://stackoverflow.com/questions/41060382/using-pip-to-install-packages-to-anaconda-environment) post to make sure you did not install BoTorch into your global Python.
-```bash
-python -m pip install botorch==0.10.0 seaborn numpy==1.23 pandas joblib
-```
-Finally, clone this repository to your local machine:
+Step 2: Install dependencies
+
+- Option A - Install with Conda (tested on Win/Linux OS):
+    - Install [PyTorch](https://pytorch.org) first (here is an example of CPU only version of PyTorch on Win)
+    ```bash
+    conda install pytorch cpuonly -c pytorch 
+    ```
+    - Then, install BoTorch and dependencies
+    ```bash
+    conda install botorch==0.10 seaborn joblib pandas -c gpytorch -c conda-forge
+    ```
+    - 
+
+- Option B - Install with pip (tested on Mac)
+
+    - Use `pip` to easily install BoTorch and all dependencies. **Be aware to use the pip from the new virtual environment**, you can refer to [this](https://stackoverflow.com/questions/41060382/using-pip-to-install-packages-to-anaconda-environment) post to make sure you did not install BoTorch into your global Python.
+    ```bash
+    python -m pip install botorch==0.10.0 seaborn numpy==1.23 pandas joblib
+    ```
+Step 3: clone this repository to your local machine:
 ```bash
 git clone https://github.com/FrankWanger/CCBO.git
 ```
@@ -57,10 +73,10 @@ There are two demo notebooks to reproduce the experiments included in the manusc
 
 `CCBO_benchmark.ipynb` A notebook showing benchmarking CCBO against vanilla BO, constrained BO, and random baseline with a synthetic electrospray problem. The same initial dataset has been provided in the notebook.
 
-The parameters that are related to reproducing the results in the manuscript are:
+The parameters that are related to reproduce the results in the manuscript are:
 - `ITERS`, the total number of iterations, the default is `10` 
 - `TRIALS`, the number of repetition (of the iterations) to obtain confidence interval, the default is 20
-- `PARA_EVAL`, a boolean that sets whether to use `joblib` to parallel the different trials. This shouldn't affect the results, the default is `True`. If sets to `False`
+- `PARA_EVAL`, a boolean that sets whether to use `joblib` to parallel the different trials. This will significantly affect benchmark time, the default is `True`.
 
 Notably, the run time for reproducing the benchmark result with the default parameters on a PC with 8-core CPU (i7-10700F, 2.9 GHz) and 32 GB RAM was ~1 h. 
 
