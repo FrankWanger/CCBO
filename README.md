@@ -97,4 +97,4 @@ There are a few core and helper functions developed in `ccbo/core.py`
 This project is licensed under the MIT License. See the `LICENSE` file for more details.
 
 # Contact
-For any questions or issues, please contact Fanjin Wang at fanjin.wang.20@ucl.ac.uk
+For any questions or issues, please contact Fanjin Wang (fanjin.wang.20@ucl.ac.uk)
