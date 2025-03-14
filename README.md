@@ -12,6 +12,8 @@ This project involves the implementation of CCBO based on Gaussian Process (GP) 
 
 This code repository includes two notebooks demonstrating the implementation of CCBO for benchmarking and guiding lab experiment. For detailed information, see the [Getting Started](#getting-started) section.
 
+**\*New\*** If you want to try yourself in the human vs CCBO campaign, come and challenge CCBO in a [web-based app](https://huggingface.co/spaces/FrankWanger/ccbo) hosted by Huggingface. If you would like to contribute as a human participant, please contact us!
+
 ## How does it work to guide experiment?
 ![CCBO Overview](ccbo.png)
 
